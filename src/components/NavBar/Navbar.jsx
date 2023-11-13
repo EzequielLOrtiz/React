@@ -1,34 +1,64 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React, { useState } from 'react';
 import CartWidget from '../CartWidget/CartWidget';
+import "./navbar.css";
+import { Link } from 'react-router-dom';
 
-function NavbarComponent({ links }) {
+const Navbar = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const enlaces = ['Inicio', 'Contacto', 'Ubicacion'];
+
+  const productos = ["Mouse", "Teclado", "HeadSet", "Monitor", "MousePad"];
+
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Urich Padel</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <NavDropdown title="Productos" id="basic-nav-dropdown">
-              {links.map((link, index) => (
-                <NavDropdown.Item key={index} href={`#${link}`}>
-                  {link}
-                </NavDropdown.Item>
-              ))}
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Ver todos</NavDropdown.Item>
-            </NavDropdown>
-              <CartWidget/>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-}
+    <div className='navbar'>
+      <Link to="/">
+        <p>ExtremeTech</p>
+      </Link>
+      <ul>
 
-export default NavbarComponent;
+        {/* crea los enlaces partiendo del array enlaces */}
+
+        {enlaces.map((e, id) => (
+          <li key={id}>
+            <Link to={e === 'Inicio' ? '/' : `/${e.toLowerCase()}`}>
+              {e}
+            </Link>
+          </li>
+        ))}
+
+        <li className="dropdown">
+          <Link to={"/"}>
+            <span onClick={handleDropdownToggle} className="dropdown-toggle">
+              Productos
+            </span>
+          </Link>
+
+          {dropdownOpen && (
+            <ul className="dropdown-menu">
+
+              {/* crea la lista de productos desde el array productos */}
+
+              {productos.map((categoria, index) => (
+
+                <li key={index}>
+                  <Link to={`/${categoria}`}>{categoria}</Link>
+                </li>
+
+              ))}
+
+            </ul>
+          )}
+        </li>
+
+      </ul>
+      <CartWidget />
+    </div>
+  );
+};
+
+export default Navbar;

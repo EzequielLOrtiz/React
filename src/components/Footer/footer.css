@@ -1,0 +1,38 @@
+.footer {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    gap: 500px;
+  }
+  
+  .footer-section {
+    flex: 1;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 250px;
+  }
+  

@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <Link to="/">
-        <p>ExtremeTech</p>
+        <h2>ExtremeTech</h2>
       </Link>
       <ul>
 

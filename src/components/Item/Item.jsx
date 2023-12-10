@@ -13,7 +13,7 @@ const Item = ({ product }) => {
                     <div className='contenedor'>
                         <h1>{product.nombre}</h1>
                         <img src={product.img} alt={product.nombre} />
-                        <p>Precio: {product.precio}</p>
+                        <p>Precio: $ {product.precio}</p>
                     </div>
                 </Link>
             </div>

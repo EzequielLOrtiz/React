@@ -17,12 +17,16 @@ const decrement = () => {
     }
 }
 
+const addToCart = () => {
+    onAdd(count)
+}
+
     return (
         <div className='contador'>
             <button onClick={decrement}> - </button>
             <span>{count}</span>
             <button onClick={increment}> + </button>
-            <button onClick={()=>{onAdd(count)}}> Agregar al carrito</button>
+            <button onClick={addToCart}> Agregar al carrito</button>
         </div>
     );
 };
